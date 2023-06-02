@@ -12,6 +12,10 @@
 <h2><p align="center"><i>Then, use it to install SFML: </i></p></h2>
 
     brew install sfml
+    
+<h2><p align="center"><i>Verify installation with: </i></p></h2>
+    
+    brew list sfml
             
 <h2><p align="center"><i>Clone this repo: </i></p></h2>
 
