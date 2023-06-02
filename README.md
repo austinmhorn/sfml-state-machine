@@ -9,7 +9,7 @@
         brew upgrade
     fi
         
-<h2><p align="center"><i>Then, use it to install SFML: </i></p></h2>
+<h2><p align="center"><i>Then, use it to install <a href="https://www.sfml-dev.org">SFML</a>: </i></p></h2>
 
     brew install sfml
     
