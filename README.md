@@ -1,5 +1,5 @@
 
-<h2><p align="center"><i>Install/Upgrade Homebrew (multifarious package manager): </i></p></h2>
+<h2><p align="center"><i>Install or upgrade <a href="https://brew.sh">Homebrew</a>: </i></p></h2>
 
     if [[ $(command -v brew) == "" ]]; then
     echo "Installing Homebrew"
