@@ -1,11 +1,13 @@
 
-<h2><p align="center"><i>Install Homebrew (multifarious package manager): </i></p></h2>
+<h2><p align="center"><i>Install/Upgrade Homebrew (multifarious package manager): </i></p></h2>
 
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-<h2><p align="center"><i>or upgrade if already have it </i></p></h2>
-
-    brew upgrade
+    if [[ $(command -v brew) == "" ]]; then
+    echo "Installing Homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    else
+        echo "Updating Homebrew"
+        brew upgrade
+    fi
         
 <h2><p align="center"><i>Then, use it to install SFML: </i></p></h2>
 
