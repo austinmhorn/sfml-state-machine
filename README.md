@@ -1,3 +1,16 @@
+
+<h2><p align="center"><i>Install Homebrew (multifarious package manager): </i></p></h2>
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+<h2><p align="center"><i>or upgrade if already have it </i></p></h2>
+
+    brew upgrade
+        
+<h2><p align="center"><i>Then, use it to install SFML: </i></p></h2>
+
+    brew install sfml
+            
 <h2><p align="center"><i>Clone this repo: </i></p></h2>
 
     git clone https://github.com/austinmhorn/sfml-state-machine.git
