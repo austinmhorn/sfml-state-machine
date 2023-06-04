@@ -12,11 +12,13 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 
+#include "../Core/Resources.hpp"
+
 #include <iostream>
 #include <memory>
 
-IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, const bool replace)
-    : State{ machine, window, replace }
+IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, Resources& resources, const bool replace)
+    : State{ machine, window, resources, replace }
     , m_alpha{ 0, 0, 0, 255 }
 {
     const auto window_size = sf::Vector2f{ window.getSize() };
@@ -24,6 +26,7 @@ IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, const bo
     // Fill the fader surface with black
     m_fader.setFillColor(m_alpha);
     m_fader.setSize(window_size);
+    
     
     std::cout << "IntroState Init" << std::endl;;
 }
@@ -87,7 +90,7 @@ void IntroState::update()
 void IntroState::draw()
 {
     m_window.clear();
-
+    
     if (m_alpha.a != 0)
         m_window.draw(m_fader);
 

@@ -44,7 +44,7 @@ public:
     void quit();
 
     template <typename T>
-    static std::unique_ptr<T> build(StateMachine& machine, sf::RenderWindow& window, bool replace = true);
+    static std::unique_ptr<T> build(StateMachine& machine, sf::RenderWindow& window, Resources& resources, bool replace = true);
 
 private:
     // The stack of states
@@ -62,13 +62,13 @@ private:
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 template <typename T>
-std::unique_ptr<T> StateMachine::build(StateMachine& machine, sf::RenderWindow& window, bool replace)
+std::unique_ptr<T> StateMachine::build(StateMachine& machine, sf::RenderWindow& window, Resources& resources, bool replace)
 {
     auto new_state = std::unique_ptr<T>{ nullptr };
 
     try
     {
-        new_state = std::make_unique<T>(machine, window, replace);
+        new_state = std::make_unique<T>(machine, window, resources, replace);
     }
     catch(std::runtime_error& exception)
     {

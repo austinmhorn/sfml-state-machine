@@ -20,7 +20,7 @@
 class OptionsState final : public State
 {
 public:
-    OptionsState(StateMachine& machine, sf::RenderWindow& window, const bool replace = true);
+    OptionsState(StateMachine& machine, sf::RenderWindow& window, Resources& resources, const bool replace = true);
 
     void pause() override;
     void resume() override;

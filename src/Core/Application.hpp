@@ -10,21 +10,23 @@
 #define Application_hpp
 
 #include "State/Base/StateMachine.hpp"
-#include "ResourcePath.hpp"
-
 #include <SFML/Graphics/RenderWindow.hpp>
+
+#include "ResourcePath.hpp"
+#include "Resources.hpp"
 
 class Application
 {
 public:
     
     void run();
-    //void loadResources();
+    void loadResources();
 
 private:
     
     StateMachine     m_machine;
     sf::RenderWindow m_window;
+    Resources        m_resources;
 };
 
 

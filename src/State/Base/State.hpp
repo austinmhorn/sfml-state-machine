@@ -18,11 +18,13 @@ namespace sf
 
 class StateMachine;
 
+struct Resources;
+
 class State
 {
 public:
     
-    State(StateMachine& machine, sf::RenderWindow& window, const bool replace = true);
+    State(StateMachine& machine, sf::RenderWindow& window, Resources& resources, const bool replace = true);
     virtual ~State() = default;
     State(const State&) = delete;
     State& operator=(const State&) = delete;
@@ -42,6 +44,7 @@ protected:
     
     StateMachine&          m_machine;
     sf::RenderWindow&      m_window;
+    Resources&             m_resources;
     std::unique_ptr<State> m_next;
     bool                   m_replace;
 };

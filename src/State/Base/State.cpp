@@ -8,9 +8,10 @@
 
 #include "State.hpp"
 
-State::State(StateMachine& machine, sf::RenderWindow &window, const bool replace)
+State::State(StateMachine& machine, sf::RenderWindow &window, Resources& resources, const bool replace)
     : m_machine(machine)
     , m_window(window)
+    , m_resources(resources)
     , m_replace(replace)
 {
     

@@ -13,6 +13,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
 
 # CMake options
 option(STATEMACHINEAPPLICATION_STATIC_STD_LIBS "Use statically linked standard/runtime libraries? This option must match the one used for SFML." OFF)
+
+# Append CMake Module path
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 if(NOT BUILD_SHARED_LIBS)

@@ -20,7 +20,7 @@
 class PlayState final : public State
 {
 public:
-    PlayState(StateMachine& machine, sf::RenderWindow& window, const bool replace = true);
+    PlayState(StateMachine& machine, sf::RenderWindow& window, Resources& resources, const bool replace = true);
 
     void pause() override;
     void resume() override;

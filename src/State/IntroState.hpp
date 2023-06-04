@@ -13,14 +13,17 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include <SFML/Window/Cursor.hpp>
 
 #include "Base/State.hpp"
 
+struct Resources;
+
 class IntroState final : public State
 {
 public:
-    IntroState(StateMachine& machine, sf::RenderWindow& window, const bool replace = true);
+    IntroState(StateMachine& machine, sf::RenderWindow& window, Resources& resources, const bool replace = true);
 
     void pause() override;
     void resume() override;
