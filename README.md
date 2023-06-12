@@ -1,3 +1,4 @@
+<h1><p align="center"><b>MacOS:</b></p></h1>
 
 <h2><p align="center"><i>Install or upgrade <a href="https://brew.sh">Homebrew</a>: </i></p></h2>
 
@@ -8,6 +9,15 @@
         echo "Updating Homebrew"
         brew upgrade
     fi
+
+<h1><p align="center"><b>WSL:</b></p></h1>
+
+- 1) Navigate to your home directory for your user on the local computer. You can check that the path is correct because it DOES NOT have OneDrive in the path when printing with pwd.<br>
+- 2) Then go here: https://brew.sh/ <br>
+- 3) Copy the link starting with "/bin/bash -c ... " <br>
+- 4) Paste and run the command in that directory of your shell. <br>
+
+---
         
 <h2><p align="center"><i>Then, use it to install <a href="https://www.sfml-dev.org">SFML</a>: </i></p></h2>
 
