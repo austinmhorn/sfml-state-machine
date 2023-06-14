@@ -14,7 +14,7 @@ void Application::run() {
     loadResources();
     
     // Create window
-    m_window.create({ 800, 600 }, "StateMachine Application", sf::Style::Default);
+    m_window.create({ 800, 600 }, "sfml-state-machine", sf::Style::Default);
     m_window.setFramerateLimit(30);
     
     // Initialize state machine

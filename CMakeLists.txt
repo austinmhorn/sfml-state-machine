@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.15...3.25.2)
 
-project(StateMachineApplication LANGUAGES CXX)
+project(sfml-state-machine LANGUAGES CXX)
 
-# StateMachineApplication uses C++17 features
+# sfml-state-machine uses C++17 features
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,7 +12,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY
 
 
 # CMake options
-option(STATEMACHINEAPPLICATION_STATIC_STD_LIBS "Use statically linked standard/runtime libraries? This option must match the one used for SFML." OFF)
+option(SFML-STATE-MACHINE_STATIC_STD_LIBS "Use statically linked standard/runtime libraries? This option must match the one used for SFML." OFF)
 
 # Append CMake Module path
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
@@ -49,22 +49,22 @@ set(SOURCE_FILES
     "src/State/OptionsState.cpp"
     "src/State/IntroState.hpp"
     "src/State/IntroState.cpp")
-add_executable(StateMachineApplication ${SOURCE_FILES})
+add_executable(sfml-state-machine ${SOURCE_FILES})
 
 # Static Runtime
-if(STATEMACHINEAPPLICATION_STATIC_STD_LIBS)
+if(SFML-STATE-MACHINE_STATIC_STD_LIBS)
     if(NOT SFML_STATIC_LIBRARIES)
-        message("\n-> If you check STATEMACHINEAPPLICATION_STATIC_STD_LIBS, you also need to check SFML_STATIC_LIBRARIES.")
+        message("\n-> If you check SFML-STATE-MACHINE_STATIC_STD_LIBS, you also need to check SFML_STATIC_LIBRARIES.")
         message("-> It would lead to multiple runtime environments which results in undefined behavior.\n")
     elseif(WIN32 AND MSVC)
-        set_property(TARGET StateMachineApplication PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+        set_property(TARGET sfml-state-machine PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
     elseif(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        target_link_options(StateMachineApplication PRIVATE -static)
+        target_link_options(sfml-state-machine PRIVATE -static)
     endif()
 endif()
 
 # Link libraries
-target_link_libraries(StateMachineApplication
+target_link_libraries(sfml-state-machine
     "-framework Cocoa"
     "-framework AppKit"
     "-framework CoreData"
@@ -76,7 +76,7 @@ target_link_libraries(StateMachineApplication
     sfml-network)
 
 # Install executable
-install(TARGETS StateMachineApplication
+install(TARGETS sfml-state-machine
         RUNTIME DESTINATION .)
 
 # Install game data
