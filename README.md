@@ -18,13 +18,18 @@
 - 4) Paste and run the command in that directory of your shell. <br>
 
 ---
+
+<h2><p align="center"><i>Then, use it to install <a href="https://cmake.org">CMake</a>: </i></p></h2>
+
+    brew install cmake
         
-<h2><p align="center"><i>Then, use it to install <a href="https://www.sfml-dev.org">SFML</a>: </i></p></h2>
+<h2><p align="center"><i>As well as <a href="https://www.sfml-dev.org">SFML</a>, the C++ Multimedia Library used in this project: </i></p></h2>
 
     brew install sfml
     
-<h2><p align="center"><i>Verify installation with: </i></p></h2>
-    
+<h2><p align="center"><i>Verify installations with: </i></p></h2>
+
+    brew list cmake
     brew list sfml
             
 <h2><p align="center"><i>Clone this repo: </i></p></h2>
