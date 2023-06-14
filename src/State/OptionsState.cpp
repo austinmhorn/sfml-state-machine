@@ -21,6 +21,10 @@ OptionsState::OptionsState(StateMachine& machine, sf::RenderWindow& window, Reso
 {
     const auto window_size = sf::Vector2f{ window.getSize() };
 
+    // Fill the background with yellow
+    m_background.setFillColor(sf::Color::Yellow);
+    m_background.setSize(window_size);
+    
     // Fill the fader surface with black
     m_fader.setFillColor(m_alpha);
     m_fader.setSize(window_size);
@@ -60,6 +64,20 @@ void OptionsState::handleEvent()
             case sf::Event::MouseButtonReleased:
                 break;
                 
+            case sf::Event::KeyPressed:
+                
+                ///< Switch event based on key pressed
+                switch (event.key.code)
+                {
+                    case sf::Keyboard::Key::Tab:
+                        m_machine.lastState();
+                        break;
+                        
+                    default:
+                        break;
+                }
+                break;
+                
             case sf::Event::TextEntered:
                 break;
                 
@@ -87,6 +105,8 @@ void OptionsState::update()
 void OptionsState::draw()
 {
     m_window.clear();
+    
+    m_window.draw(m_background);
 
     if (m_alpha.a != 0)
         m_window.draw(m_fader);

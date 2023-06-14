@@ -33,6 +33,7 @@ public:
 
 private:
     
+    sf::RectangleShape m_background;
     sf::RectangleShape m_fader;
     sf::Color          m_alpha;
     sf::Vector2f       m_current_mouse_position;

@@ -7,6 +7,8 @@
 //
 
 #include "IntroState.hpp"
+#include "PlayState.hpp"
+#include "OptionsState.hpp"
 #include "Base/StateMachine.hpp"
 
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -23,6 +25,10 @@ IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, Resource
 {
     const auto window_size = sf::Vector2f{ window.getSize() };
 
+    // Fill the background with green
+    m_background.setFillColor(sf::Color::Green);
+    m_background.setSize(window_size);
+    
     // Fill the fader surface with black
     m_fader.setFillColor(m_alpha);
     m_fader.setSize(window_size);
@@ -63,6 +69,24 @@ void IntroState::handleEvent()
             case sf::Event::MouseButtonReleased:
                 break;
                 
+            case sf::Event::KeyPressed:
+                
+                ///< Switch event based on key pressed
+                switch (event.key.code)
+                {
+                    case sf::Keyboard::Key::Space:
+                        m_next = StateMachine::build<PlayState>(m_machine, m_window, m_resources, true);
+                        break;
+                        
+                    case sf::Keyboard::Key::O:
+                        m_next = StateMachine::build<OptionsState>(m_machine, m_window, m_resources, false);
+                        break;
+                        
+                    default:
+                        break;
+                }
+                break;
+                
             case sf::Event::TextEntered:
                 break;
                 
@@ -90,6 +114,8 @@ void IntroState::update()
 void IntroState::draw()
 {
     m_window.clear();
+    
+    m_window.draw(m_background);
     
     if (m_alpha.a != 0)
         m_window.draw(m_fader);

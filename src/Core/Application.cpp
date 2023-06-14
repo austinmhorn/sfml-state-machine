@@ -34,7 +34,8 @@ void Application::run() {
 void Application::loadResources() {
     // Load icon
     sf::Image icon;
-    assert(icon.loadFromFile(resourcePath() + "src/Assets/icon.png"));
+    //assert(icon.loadFromFile(resourcePath() + "src/Assets/icon.png"));
+    assert(icon.loadFromFile("src/Assets/icon.png"));
     
     // Set icon
     m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
