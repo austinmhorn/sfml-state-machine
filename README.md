@@ -45,4 +45,4 @@
     
  <h2><p align="center"><i>Run executable: </i></p></h2>
 
-    ./StateMachineApplication
+    ./sfml-state-machine
