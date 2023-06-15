@@ -36,8 +36,6 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 # Compile target
 set(SOURCE_FILES
     "src/main.cpp"
-    "src/Core/ResourcePath.hpp"
-    "src/Core/ResourcePath.mm"
     "src/Core/Resources.hpp"
     "src/Core/Resources.cpp"
     "src/Core/Application.hpp"

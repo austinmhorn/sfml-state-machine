@@ -12,7 +12,6 @@
 #include "State/Base/StateMachine.hpp"
 #include <SFML/Graphics/RenderWindow.hpp>
 
-#include "ResourcePath.hpp"
 #include "Resources.hpp"
 
 class Application
