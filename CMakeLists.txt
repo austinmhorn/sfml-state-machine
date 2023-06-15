@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.15...3.25.2)
 
-project(sfml-state-machine)
-
-enable_language(CXX)
-enable_language(OBJCXX)
+project(sfml-state-machine 
+	LANGUAGES CXX)
 
 # sfml-state-machine uses C++17 features
 set(CMAKE_CXX_STANDARD 17)
