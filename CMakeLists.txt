@@ -64,10 +64,6 @@ endif()
 
 # Link libraries
 target_link_libraries(sfml-state-machine
-    "-framework Cocoa"
-    "-framework AppKit"
-    "-framework CoreData"
-    "-framework Foundation"
     sfml-audio
     sfml-graphics
     sfml-system
