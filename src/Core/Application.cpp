@@ -5,6 +5,7 @@
 //  Created by Austin Horn on 9/30/22.
 //  Copyright © 2022 Austin Horn. All rights reserved.
 //
+#include <cassert> 
 
 #include "Application.hpp"
 #include "State/IntroState.hpp"
