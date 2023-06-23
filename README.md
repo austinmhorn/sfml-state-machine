@@ -16,7 +16,7 @@ You will need <a href="https://cmake.org">CMake</a> to build the project (an ope
 
 I recommend you also install <a href="https://git-scm.com">Git</a> to easily clone this repository: 
 
-    sudo apt-get install git-all
+    brew install git
 
 Clone this repository
 
