@@ -23,10 +23,9 @@ static const std::basic_string<char> __filepath_Sansation = "src/Assets/sansatio
 
 
 
-static sf::Image icon_init() {
+static sf::Image load_icon() {
     static sf::Image icon;
-    if (!icon.loadFromFile(__filepath_icon))
-        std::exit( EXIT_FAILURE );
+    assert(icon.loadFromFile(__filepath_icon));
     return icon;
 }
 
@@ -103,7 +102,6 @@ struct Resources
     static const sf::Color LightPurple;
     static const sf::Color Orange;
     static const sf::Color DarkBlue;
-    static const sf::Color PokerTableGreen;
     
     sf::Cursor HandCursor;
     sf::Cursor ArrowCursor;

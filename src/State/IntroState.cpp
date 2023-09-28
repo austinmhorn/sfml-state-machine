@@ -34,17 +34,17 @@ IntroState::IntroState(StateMachine& machine, sf::RenderWindow& window, Resource
     m_fader.setSize(window_size);
     
     
-    std::cout << "IntroState Init" << std::endl;;
+    std::cout << "IntroState Init" << std::endl;
 }
 
 void IntroState::pause()
 {
-    std::cout << "IntroState Pause" << std::endl;;
+    std::cout << "IntroState Pause" << std::endl;
 }
 
 void IntroState::resume()
 {
-    std::cout << "IntroState Resume" << std::endl;;
+    std::cout << "IntroState Resume" << std::endl;
 }
 
 void IntroState::handleEvent()

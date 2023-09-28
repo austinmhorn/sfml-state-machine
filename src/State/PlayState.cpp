@@ -30,17 +30,17 @@ PlayState::PlayState(StateMachine& machine, sf::RenderWindow& window, Resources&
     m_fader.setFillColor(m_alpha);
     m_fader.setSize(window_size);
     
-    std::cout << "PlayState Init" << std::endl;;
+    std::cout << "PlayState Init" << std::endl;
 }
 
 void PlayState::pause()
 {
-    std::cout << "PlayState Pause" << std::endl;;
+    std::cout << "PlayState Pause" << std::endl;
 }
 
 void PlayState::resume()
 {
-    std::cout << "PlayState Resume" << std::endl;;
+    std::cout << "PlayState Resume" << std::endl;
 }
 
 void PlayState::handleEvent()

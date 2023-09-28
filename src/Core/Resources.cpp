@@ -25,6 +25,5 @@ const sf::Color Resources::Pink            = sf::Color( 255, 200, 221, 255 );
 const sf::Color Resources::LightPurple     = sf::Color( 223, 204, 241, 255 );
 const sf::Color Resources::Orange          = sf::Color( 239, 190, 125, 255 );
 const sf::Color Resources::DarkBlue        = sf::Color(  69,  80, 163, 255 );
-const sf::Color Resources::PokerTableGreen = sf::Color(  53, 101,  77, 255 );
 
 // Textures

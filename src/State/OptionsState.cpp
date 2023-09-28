@@ -29,17 +29,17 @@ OptionsState::OptionsState(StateMachine& machine, sf::RenderWindow& window, Reso
     m_fader.setFillColor(m_alpha);
     m_fader.setSize(window_size);
     
-    std::cout << "OptionsState Init" << std::endl;;
+    std::cout << "OptionsState Init" << std::endl;
 }
 
 void OptionsState::pause()
 {
-    std::cout << "OptionsState Pause" << std::endl;;
+    std::cout << "OptionsState Pause" << std::endl;
 }
 
 void OptionsState::resume()
 {
-    std::cout << "OptionsState Resume" << std::endl;;
+    std::cout << "OptionsState Resume" << std::endl;
 }
 
 void OptionsState::handleEvent()

@@ -1,41 +1,39 @@
 cmake_minimum_required(VERSION 3.21)
-project(sfml-state-machine LANGUAGES CXX)
+
+set( PROJECT_NAME "sfml-state-machine" )
+project( ${PROJECT_NAME} LANGUAGES CXX )
+set( TARGET ${PROJECT_NAME} )
 
 # sfml-state-machine uses C++17 features
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+set( CMAKE_CXX_STANDARD 17 )
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin )
 
-include(FetchContent)
-FetchContent_Declare(SFML
-    GIT_REPOSITORY https://github.com/SFML/SFML.git
-    GIT_TAG 2.6.x)
-FetchContent_MakeAvailable(SFML)
+find_package( SFML 2.5 COMPONENTS graphics window system network audio )
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
+if ( NOT SFML_FOUND )
+    include(FetchContent)
+    FetchContent_Declare(
+        SFML
+        GIT_REPOSITORY https://github.com/SFML/SFML.git
+        GIT_TAG 2.6.x)
+    FetchContent_MakeAvailable(SFML)
 
-# Compile target
-set(SOURCE_FILES
-    "src/main.cpp"
-    "src/Core/Resources.hpp"
-    "src/Core/Resources.cpp"
-    "src/Core/Application.hpp"
-    "src/Core/Application.cpp"
-    "src/State/Base/State.hpp"
-    "src/State/Base/State.cpp"
-    "src/State/Base/StateMachine.hpp"
-    "src/State/Base/StateMachine.cpp"
-    "src/State/PlayState.hpp"
-    "src/State/PlayState.cpp"
-    "src/State/OptionsState.hpp"
-    "src/State/OptionsState.cpp"
-    "src/State/IntroState.hpp"
-    "src/State/IntroState.cpp")
-add_executable(sfml-state-machine ${SOURCE_FILES})
-target_link_libraries(sfml-state-machine PRIVATE sfml-graphics sfml-window sfml-system sfml-audio sfml-network)
-target_compile_features(sfml-state-machine PRIVATE cxx_std_17)
-if (WIN32 AND BUILD_SHARED_LIBS)
-    add_custom_command(TARGET sfml-state-machine POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_RUNTIME_DLLS:sfml-state-machine> $<TARGET_FILE_DIR:sfml-state-machine> COMMAND_EXPAND_LISTS)
+    find_package( SFML 2.5 REQUIRED COMPONENTS graphics window system network audio )
 endif()
 
-install(TARGETS sfml-state-machine)
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/src )
+
+# Set source and include paths
+set( SOURCE_PATH "${PROJECT_SOURCE_DIR}/src/" )
+set( INCLUDE_PATH "${PROJECT_SOURCE_DIR}/include/" )
+
+# Recursively find project files
+file( GLOB_RECURSE HPPS "${SOURCE_PATH}/*.hpp" )
+file( GLOB_RECURSE CPPS "${SOURCE_PATH}/*.cpp"  )
+
+add_executable( ${TARGET} ${CPPS} ${HPPS} )
+
+target_link_libraries( ${TARGET} PRIVATE sfml-graphics sfml-window sfml-system sfml-audio sfml-network )
+target_compile_features( ${TARGET} PRIVATE cxx_std_17 )
+
+install( TARGETS ${TARGET} RUNTIME DESTINATION )
