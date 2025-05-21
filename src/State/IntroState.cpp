@@ -49,49 +49,44 @@ void IntroState::resume()
 
 void IntroState::handleEvent()
 {
-    for (auto event = sf::Event{}; m_window.pollEvent(event);)
+    while (const std::optional<sf::Event> event = m_window.pollEvent())
     {
-        switch (event.type)
+        if (event->is<sf::Event::Closed>())
         {
-            case sf::Event::Closed:
-                m_machine.quit();
-                break;
-                
-            case sf::Event::MouseMoved:
-                ///< Get new mouse position
-                m_current_mouse_position = m_window.mapPixelToCoords({ event.mouseMove.x, event.mouseMove.y });
-                                    
-                break;
-                
-            case sf::Event::MouseButtonPressed:
-                break;
-                
-            case sf::Event::MouseButtonReleased:
-                break;
-                
-            case sf::Event::KeyPressed:
-                
-                ///< Switch event based on key pressed
-                switch (event.key.code)
-                {
-                    case sf::Keyboard::Key::Space:
-                        m_next = StateMachine::build<PlayState>(m_machine, m_window, m_resources, true);
-                        break;
-                        
-                    case sf::Keyboard::Key::O:
-                        m_next = StateMachine::build<OptionsState>(m_machine, m_window, m_resources, false);
-                        break;
-                        
-                    default:
-                        break;
-                }
-                break;
-                
-            case sf::Event::TextEntered:
-                break;
-                
-            default:
-                break;
+            m_machine.quit();
+        }
+        else if (event->is<sf::Event::MouseMoved>())
+        {
+            sf::Vector2i localPosition = sf::Mouse::getPosition(m_window);
+            m_current_mouse_position = m_window.mapPixelToCoords(localPosition);
+        }
+        else if (event->is<sf::Event::MouseButtonPressed>())
+        {
+            // Handle mouse button pressed
+        }
+        else if (event->is<sf::Event::MouseButtonReleased>())
+        {
+            // Handle mouse button released
+        }
+        else if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+        {
+            switch (keyPressed->scancode)
+            {
+                case sf::Keyboard::Scancode::Escape:
+                    m_machine.quit();
+                    break;
+                    
+                case sf::Keyboard::Scancode::Enter:
+                    m_next = StateMachine::build<PlayState>(m_machine, m_window, m_resources, true);
+                    break;
+
+                case sf::Keyboard::Scancode::Tab:
+                    m_next = StateMachine::build<OptionsState>(m_machine, m_window, m_resources, false); // Don't replace, add to stack
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

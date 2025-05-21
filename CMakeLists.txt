@@ -8,20 +8,11 @@ set( TARGET ${PROJECT_NAME} )
 set( CMAKE_CXX_STANDARD 17 )
 set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin )
 
-find_package( SFML 2.5 COMPONENTS graphics window system network audio )
-
-if ( NOT SFML_FOUND )
-    include(FetchContent)
-    FetchContent_Declare(
-        SFML
-        GIT_REPOSITORY https://github.com/SFML/SFML.git
-        GIT_TAG 2.6.x)
-    FetchContent_MakeAvailable(SFML)
-
-    find_package( SFML 2.5 REQUIRED COMPONENTS graphics window system network audio )
-endif()
+find_package(SFML 3 COMPONENTS Graphics Window System Audio Network REQUIRED)
 
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/src )
+include_directories(/opt/homebrew/include)
+link_directories(/opt/homebrew/lib)
 
 # Set source and include paths
 set( SOURCE_PATH "${PROJECT_SOURCE_DIR}/src/" )

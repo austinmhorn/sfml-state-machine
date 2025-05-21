@@ -16,14 +16,14 @@ void Application::run()
     loadResources();
     
     // Create window
-    m_window.create({ 800, 600 }, "sfml-state-machine", sf::Style::Default);
+    m_window.create( sf::VideoMode({ 800u, 600u }), "sfml-state-machine", sf::State::Windowed);
     m_window.setFramerateLimit(60);
     
     // Load icon
     sf::Image icon = load_icon();
     
     // Set icon
-    m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
+    m_window.setIcon({icon.getSize().x, icon.getSize().y}, icon.getPixelsPtr());
 
     // Initialize state machine
     m_machine.run(StateMachine::build<IntroState>(m_machine, m_window, m_resources, true));

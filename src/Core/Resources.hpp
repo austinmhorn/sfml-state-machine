@@ -50,7 +50,7 @@ namespace Fonts {
 
     static const sf::Font __init_Sansation() {
         static sf::Font font;
-        if(!font.loadFromFile(__filepath_Sansation))
+        if(!font.openFromFile(__filepath_Sansation))
             std::exit( EXIT_FAILURE );
         return font;
     }
@@ -102,13 +102,6 @@ struct Resources
     static const sf::Color LightPurple;
     static const sf::Color Orange;
     static const sf::Color DarkBlue;
-    
-    sf::Cursor HandCursor;
-    sf::Cursor ArrowCursor;
-    sf::Cursor TextCursor;
-    sf::Cursor CrossCursor;
-    sf::Cursor HelpCursor;
-            
 };
 
 
